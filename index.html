@@ -487,7 +487,7 @@
             <div class="reveal flex gap-5 md:block" style="--d:.05s">
               <div class="flex-none md:mb-5 flex items-center justify-center w-[52px] h-[52px] rounded-full bg-gradient-to-br from-[#01c9e2] to-[#006afe] text-white font-bold text-lg shadow-brand">1</div>
               <div>
-                <h3 class="text-lg md:text-xl font-bold text-white">Llamada de Sinergia <span class="block md:inline text-sm font-semibold text-[#01c9e2] md:ml-1">(15 min)</span></h3>
+                <h3 class="text-lg md:text-xl font-bold text-white">Llamada de Sinergia <span class="block md:inline text-sm font-semibold text-[#01c9e2] md:ml-1">(30 min)</span></h3>
                 <p class="mt-2 md:mt-3 text-sm leading-relaxed text-white/60">Validamos el encaje técnico de tu firma y definimos juntos el modelo de colaboración más adecuado.</p>
               </div>
             </div>
@@ -537,11 +537,11 @@
           </div>
 
           <p class="mt-6 text-sm text-white/50">
-            Selecciona el día y horario que prefieras. La llamada dura 15 minutos.
+            Selecciona el día y horario que prefieras. La llamada dura 30 minutos.
           </p>
         </div>
 
-        <div id="my-cal-inline" class="reveal mt-7 max-w-[880px] mx-auto min-h-[520px] md:min-h-[560px] rounded-xl2 border border-white/10 bg-brand-dark-card/60 overflow-hidden"></div>
+        <div id="my-cal-inline" class="reveal mt-7 max-w-[720px] mx-auto min-h-[420px] md:min-h-[460px] rounded-xl2 border border-white/10 bg-brand-dark-card/60 overflow-hidden"></div>
       </div>
     </section>
   </main>
@@ -696,18 +696,34 @@
 
     Cal('init');
 
+    Cal('ui', {
+      theme: 'dark',
+      hideEventTypeDetails: true,
+      cssVarsPerTheme: {
+        dark: {
+          'cal-brand': '#006afe',
+          'cal-brand-emphasis': '#0054cc',
+          'cal-brand-text': '#ffffff',
+          'cal-bg': '#001627',
+          'cal-bg-muted': '#001627',
+          'cal-bg-emphasis': '#002d4f',
+          'cal-text': '#e6f0fa',
+          'cal-text-emphasis': '#ffffff',
+          'cal-text-muted': '#8aa6c0',
+          'cal-text-inverted': '#ffffff',
+          'cal-border': 'rgba(255,255,255,0.12)',
+          'cal-border-subtle': 'rgba(255,255,255,0.08)',
+          'radius': '14px',
+        },
+      },
+    });
+
     Cal('inline', {
       elementOrSelector: '#my-cal-inline',
       calLink: 'startcompanies-businessenusa/socios',
       config: {
         theme: 'dark',
         layout: 'column_view',
-        cssVarsPerTheme: {
-          dark: {
-            'cal-brand': '#006afe',
-            'cal-border': 'rgba(255,255,255,0.1)',
-          },
-        },
       },
     });
   </script>
