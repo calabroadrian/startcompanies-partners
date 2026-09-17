@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Companies · Alianza para Firmas | LLC, EIN y Compliance en EE. UU.</title>
+  <meta name="description" content="Expandí los servicios de tu firma en EE. UU. sin aumentar tus costes operativos. Gestionamos LLC, EIN, banca y compliance corporativo de tus clientes bajo una alianza transparente y sin conflicto de interés.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#001627">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Start Companies">
+  <meta property="og:title" content="Alianza para Firmas · Start Companies">
+  <meta property="og:description" content="Gestionamos la constitución, apertura bancaria y compliance corporativo de tus clientes en EE. UU., sin conflicto de interés y sin interferir en la relación con tu firma.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              primary: '#006afe',
+              'primary-dark': '#0054cc',
+              secondary: '#01c9e2',
+              'dark-bg': '#001627',
+              'dark-mid': '#002440',
+              'dark-card': '#002d4f',
+              ink: '#283a48',
+              'ink-mid': '#4a6070',
+              'ink-light': '#8ba4b5',
+              'light-bg': '#f5f9fc',
+              footer: '#000e1a',
+            },
+          },
+          fontFamily: {
+            sans: ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          boxShadow: {
+            brand: '0 4px 18px rgba(0,106,254,.38)',
+            'brand-lg': '0 8px 24px rgba(0,106,254,.45)',
+            card: '0 8px 32px rgba(0,22,39,.14)',
+          },
+          borderRadius: {
+            xl2: '22px',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --primary: #006afe;
+      --primary-dark: #0054cc;
+      --secondary: #01c9e2;
+      --dark-bg: #001627;
+      --dark-mid: #002440;
+      --dark-card: #002d4f;
+      --ink: #283a48;
+      --ink-mid: #4a6070;
+      --light-bg: #f5f9fc;
+      --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+    .section-label::before {
+      content: "";
+      width: 20px;
+      height: 2px;
+      background: var(--secondary);
+      flex: none;
+    }
+
+    .text-grad {
+      background: linear-gradient(135deg, #01c9e2 0%, #006afe 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+      border: 1.5px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      height: 54px;
+      padding: 0 1.7rem;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(0, 106, 254, 0.38);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0, 106, 254, 0.45);
+    }
+    .btn-ghost {
+      height: 54px;
+      padding: 0 1.7rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #fff;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(1, 201, 226, 0.6);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    #siteHeader {
+      transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+      background: linear-gradient(to bottom, rgba(0, 22, 39, 0.55) 0%, transparent 100%);
+    }
+    #siteHeader.is-scrolled {
+      background: rgba(0, 22, 39, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(0, 22, 39, 0.24);
+    }
+
+    html.js .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      transition-delay: var(--d, 0s);
+    }
+    html.js .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .glass-dark {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(1, 201, 226, 0.16);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .icon-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      flex: none;
+    }
+
+    .timeline-line {
+      background: linear-gradient(90deg, transparent, var(--secondary), var(--primary), transparent);
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Start Companies",
+    "url": "https://startcompanies.net",
+    "description": "Partner de infraestructura corporativa en EE. UU. para firmas de abogados y asesores fiscales. LLC, EIN, banca y compliance bajo un modelo de alianza sin conflicto de interés.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "420 SW 7TH ST, SUITE 1015",
+      "addressLocality": "Miami",
+      "addressRegion": "FL",
+      "postalCode": "33130",
+      "addressCountry": "US"
+    }
+  }
+  </script>
+</head>
+
+<body class="bg-brand-dark-bg text-white font-sans">
+
+  <!-- ============ HEADER ============ -->
+  <header id="siteHeader" class="fixed top-0 inset-x-0 z-50">
+    <div class="max-w-[1180px] mx-auto px-5 md:px-6 h-[72px] md:h-[76px] flex items-center justify-between">
+      <a href="https://startcompanies.net" target="_blank" rel="noopener" class="flex items-center gap-2.5" aria-label="Start Companies — sitio oficial">
+        <img src="https://www.startcompanies.net/brand/logodark.svg" alt="Start Companies" class="h-8 md:h-9 w-auto max-w-[150px]" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
+        <span class="hidden items-baseline gap-2 text-white">
+          <span class="font-bold text-2xl tracking-tight">Start</span>
+          <span class="text-[0.68rem] font-semibold uppercase tracking-[0.35em] text-white/60">Companies</span>
+        </span>
+      </a>
+
+      <a href="#agenda" class="btn btn-ghost !h-[42px] !px-5 !text-sm" >
+        Agendar Llamada
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-brand-dark-bg pt-[96px] md:pt-[120px] pb-16 md:pb-20">
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute -top-44 -right-44 w-[620px] h-[620px] rounded-full opacity-25 blur-[130px]" style="background: radial-gradient(circle, #006afe 0%, transparent 70%)"></div>
+        <div class="absolute -bottom-32 -left-44 w-[540px] h-[540px] rounded-full opacity-20 blur-[130px]" style="background: radial-gradient(circle, #01c9e2 0%, transparent 70%)"></div>
+        <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(rgba(1,201,226,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(1,201,226,.5) 1px, transparent 1px); background-size: 60px 60px;"></div>
+      </div>
+
+      <div class="relative w-full max-w-[1180px] mx-auto px-5 md:px-6 text-center">
+        <div class="reveal" style="--d:.05s">
+          <span class="inline-flex items-center gap-2 rounded-full border border-[#01c9e2]/30 bg-[#01c9e2]/10 px-4 py-2 text-[0.72rem] md:text-xs font-semibold uppercase tracking-[0.06em] text-[#01c9e2]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            Diseñado exclusivamente para firmas de consultoría, despachos legales y asesores fiscales.
+          </span>
+        </div>
+
+        <h1 class="reveal mt-7 text-[clamp(2rem,5vw,3.6rem)] leading-[1.1] md:leading-[1.08] font-bold text-white tracking-[-0.03em] max-w-[900px] mx-auto" style="--d:.12s">
+          Expande los servicios de tu firma en EE.&nbsp;UU.
+          <span class="text-grad">sin aumentar tus costes operativos.</span>
+        </h1>
+
+        <p class="reveal mt-6 text-base md:text-lg leading-relaxed text-white/70 max-w-[720px] mx-auto" style="--d:.2s">
+          Gestionamos la constitución, apertura bancaria y compliance corporativo de tus clientes en Estados Unidos bajo una alianza estratégica transparente y sin conflicto de interés.
+        </p>
+
+        <div class="reveal mt-9 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4" style="--d:.28s">
+          <a href="#agenda" class="btn btn-primary w-full sm:w-auto">
+            Agendar Llamada de Exploración
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#modelos" class="btn btn-ghost w-full sm:w-auto">
+            Ver modelos de colaboración
+          </a>
+        </div>
+
+        <dl class="reveal mt-14 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-[820px] mx-auto" style="--d:.36s">
+          <div class="glass-dark rounded-xl px-4 py-3 text-left">
+            <dt class="text-[0.68rem] uppercase tracking-[0.1em] text-white/50">Confianza</dt>
+            <dd class="mt-1 text-sm font-semibold text-white/90">Cero conflicto de interés</dd>
+          </div>
+          <div class="glass-dark rounded-xl px-4 py-3 text-left">
+            <dt class="text-[0.68rem] uppercase tracking-[0.1em] text-white/50">Cobertura</dt>
+            <dd class="mt-1 text-sm font-semibold text-white/90">Operación 100% en EE. UU.</dd>
+          </div>
+          <div class="glass-dark rounded-xl px-4 py-3 text-left">
+            <dt class="text-[0.68rem] uppercase tracking-[0.1em] text-white/50">Modelo</dt>
+            <dd class="mt-1 text-sm font-semibold text-white/90">Alianza transparente y firmada</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ GARANTÍA DE SINERGIA Y PROTECCIÓN DE CLIENTES ============ -->
+    <section id="modelos" class="py-20 md:py-24 bg-brand-light-bg text-brand-ink scroll-mt-20">
+      <div class="max-w-[1180px] mx-auto px-5 md:px-6">
+        <div class="reveal">
+          <span class="section-label">Garantía de Sinergia</span>
+          <h2 class="mt-4 text-[clamp(1.6rem,3.6vw,2.4rem)] font-bold tracking-[-0.02em] text-brand-ink">
+            Tu cliente sigue siendo tu cliente
+          </h2>
+          <p class="mt-4 max-w-[760px] leading-relaxed text-brand-ink-mid">
+            Start Companies opera <strong class="font-semibold text-brand-ink">únicamente la infraestructura en EE.&nbsp;UU.</strong> y respeta en todo momento la titularidad del cliente. La relación fiscal y legal local permanece 100% bajo el control de tu firma.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+          <article class="reveal bg-white rounded-xl2 shadow-card border border-[#001627]/5 p-7 hover:-translate-y-1 transition-all duration-300" style="--d:.05s">
+            <span class="icon-box bg-[#006afe]/10 text-[#006afe]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <h3 class="mt-5 text-lg font-bold text-brand-ink">Tu cliente sigue siendo tu cliente</h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-brand-ink-mid">Nunca intermediamos la relación con tu cliente, no lo contactamos directamente y nunca lo solicitamos como cuenta propia.</p>
+          </article>
+
+          <article class="reveal bg-white rounded-xl2 shadow-card border border-[#001627]/5 p-7 hover:-translate-y-1 transition-all duration-300" style="--d:.12s">
+            <span class="icon-box bg-[#01c9e2]/15 text-[#0089a0]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </span>
+            <h3 class="mt-5 text-lg font-bold text-brand-ink">Respuesta integral instantánea</h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-brand-ink-mid">Le das solución inmediata a clientes que solicitan operar o facturar desde EE.&nbsp;UU. sin invertir en capacidad operativa propia.</p>
+          </article>
+
+          <article class="reveal bg-white rounded-xl2 shadow-card border border-[#001627]/5 p-7 hover:-translate-y-1 transition-all duration-300" style="--d:.2s">
+            <span class="icon-box bg-[#006afe]/10 text-[#006afe]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+            </span>
+            <h3 class="mt-5 text-lg font-bold text-brand-ink">Sin conflicto de interés</h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-brand-ink-mid">No competimos con tu firma. Somos un proveedor de infraestructura bajo acuerdo de alianza, con condiciones claras y firmadas.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="mt-20 md:mt-24 bg-white/60 border-t border-[#001627]/5">
+        <div class="max-w-[1180px] mx-auto px-5 md:px-6 py-16 md:py-20">
+          <div class="reveal max-w-[680px]">
+            <span class="section-label">Dos modelos de colaboración</span>
+            <h2 class="mt-4 text-[clamp(1.5rem,3.4vw,2.2rem)] font-bold tracking-[-0.02em] text-brand-ink">
+              Tú decides la forma de trabajar
+            </h2>
+          </div>
+
+          <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <article class="reveal relative overflow-hidden rounded-xl2 border border-[#006afe]/15 bg-white p-8 shadow-card hover:-translate-y-1 transition-all duration-300" style="--d:.08s">
+              <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#01c9e2] to-[#006afe]"></div>
+              <div class="flex items-center gap-3">
+                <span class="icon-box bg-[#006afe]/10 text-[#006afe]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                </span>
+                <div>
+                  <p class="text-[0.7rem] uppercase tracking-[0.12em] text-[#0089a0] font-semibold">Modelo A</p>
+                  <h3 class="text-xl font-bold text-brand-ink">Referral Partner</h3>
+                </div>
+              </div>
+              <p class="mt-4 text-sm leading-relaxed text-brand-ink-mid">Nos derivas al cliente y recibes una comisión recurrente o fija por cada caso gestionado. Tú conservas la visibilidad y el control de la relación comercial.</p>
+              <ul class="mt-5 space-y-2.5">
+                <li class="flex items-start gap-2.5 text-sm text-brand-ink">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Comisión por caso derivado y gestionado
+                </li>
+                <li class="flex items-start gap-2.5 text-sm text-brand-ink">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Tú decides qué casos y a qué clientes
+                </li>
+                <li class="flex items-start gap-2.5 text-sm text-brand-ink">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Sin costo ni exclusividad para iniciar
+                </li>
+              </ul>
+            </article>
+
+            <article class="reveal relative overflow-hidden rounded-xl2 border border-[#01c9e2]/20 bg-white p-8 shadow-card hover:-translate-y-1 transition-all duration-300" style="--d:.16s">
+              <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#006afe] to-[#01c9e2]"></div>
+              <div class="flex items-center gap-3">
+                <span class="icon-box bg-[#01c9e2]/15 text-[#0089a0]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+                </span>
+                <div>
+                  <p class="text-[0.7rem] uppercase tracking-[0.12em] text-[#0089a0] font-semibold">Modelo B</p>
+                  <h3 class="text-xl font-bold text-brand-ink">White Label / Co-gestión</h3>
+                </div>
+              </div>
+              <p class="mt-4 text-sm leading-relaxed text-brand-ink-mid">Facturas el servicio a tu cliente bajo la cobertura y marca de tu firma. Nosotros ejecutamos la operación en EE.&nbsp;UU. y tú mantienes el control comercial.</p>
+              <ul class="mt-5 space-y-2.5">
+                <li class="flex items-start gap-2.5 text-sm text-brand-ink">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Tu marca frente al cliente final
+                </li>
+                <li class="flex items-start gap-2.5 text-sm text-brand-ink">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Soporte y ejecución delegada
+                </li>
+                <li class="flex items-start gap-2.5 text-sm text-brand-ink">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Margen controlado por tu firma
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ALCANCE TÉCNICO DE SERVICIOS GESTIONADOS ============ -->
+    <section id="servicios" class="py-20 md:py-24 bg-brand-dark-bg scroll-mt-20">
+      <div class="max-w-[1180px] mx-auto px-5 md:px-6">
+        <div class="reveal max-w-[680px]">
+          <span class="section-label">Capacidad operativa</span>
+          <h2 class="mt-4 text-[clamp(1.6rem,3.6vw,2.4rem)] font-bold tracking-[-0.02em] text-white">
+            Alcance técnico de servicios gestionados
+          </h2>
+          <p class="mt-4 leading-relaxed text-white/60">
+            Una matriz de capacidades completa para que tu firma ofrezca un servicio corporativo estadounidense integral, sin construir estructura propia.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+          <article class="reveal glass-dark rounded-xl2 p-7 hover:border-[#006afe]/40 transition-all duration-300" style="--d:.05s">
+            <span class="icon-box bg-[#006afe]/15 text-[#5fa8ff]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+            </span>
+            <h3 class="mt-5 text-lg font-bold text-white">Estructura Corporativa</h3>
+            <ul class="mt-4 space-y-2.5">
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Constitución de LLCs
+              </li>
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                C-Corps
+              </li>
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Agente Registrado
+              </li>
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Dirección Física en EE. UU.
+              </li>
+            </ul>
+          </article>
+
+          <article class="reveal glass-dark rounded-xl2 p-7 hover:border-[#006afe]/40 transition-all duration-300" style="--d:.12s">
+            <span class="icon-box bg-[#006afe]/15 text-[#5fa8ff]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7 12 2"/></svg>
+            </span>
+            <h3 class="mt-5 text-lg font-bold text-white">Identificación Fiscal y Banca</h3>
+            <ul class="mt-4 space-y-2.5">
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Obtención de EIN
+              </li>
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Solicitud de ITIN
+              </li>
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Apertura de cuentas bancarias corporativas
+              </li>
+            </ul>
+          </article>
+
+          <article class="reveal glass-dark rounded-xl2 p-7 hover:border-[#006afe]/40 transition-all duration-300" style="--d:.2s">
+            <span class="icon-box bg-[#006afe]/15 text-[#5fa8ff]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <h3 class="mt-5 text-lg font-bold text-white">Compliance &amp; Mantenimiento</h3>
+            <ul class="mt-4 space-y-2.5">
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Presentación de BOI ante FinCEN
+              </li>
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Annual Reports
+              </li>
+              <li class="flex items-start gap-2.5 text-sm text-white/70">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Renovaciones estatales
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FLUJO DE ALIANZA ============ -->
+    <section id="proceso" class="py-20 md:py-24 bg-brand-dark-mid scroll-mt-20">
+      <div class="max-w-[1180px] mx-auto px-5 md:px-6">
+        <div class="reveal max-w-[680px]">
+          <span class="section-label">Flujo de Alianza</span>
+          <h2 class="mt-4 text-[clamp(1.6rem,3.6vw,2.4rem)] font-bold tracking-[-0.02em] text-white">
+            Un proceso en 3 pasos, sin fricción
+          </h2>
+          <p class="mt-4 leading-relaxed text-white/60">
+            Desde la primera llamada hasta la ejecución delegada: un camino claro, sin formularios interminables ni compromisos.
+          </p>
+        </div>
+
+        <div class="relative mt-12">
+          <div class="absolute top-[26px] left-[26px] md:left-0 right-0 h-px timeline-line hidden md:block" aria-hidden="true"></div>
+          <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="reveal flex gap-5 md:block" style="--d:.05s">
+              <div class="flex-none md:mb-5 flex items-center justify-center w-[52px] h-[52px] rounded-full bg-gradient-to-br from-[#01c9e2] to-[#006afe] text-white font-bold text-lg shadow-brand">1</div>
+              <div>
+                <h3 class="text-lg md:text-xl font-bold text-white">Llamada de Sinergia <span class="block md:inline text-sm font-semibold text-[#01c9e2] md:ml-1">(15 min)</span></h3>
+                <p class="mt-2 md:mt-3 text-sm leading-relaxed text-white/60">Validamos el encaje técnico de tu firma y definimos juntos el modelo de colaboración más adecuado.</p>
+              </div>
+            </div>
+
+            <div class="reveal flex gap-5 md:block" style="--d:.14s">
+              <div class="flex-none md:mb-5 flex items-center justify-center w-[52px] h-[52px] rounded-full bg-gradient-to-br from-[#01c9e2] to-[#006afe] text-white font-bold text-lg shadow-brand">2</div>
+              <div>
+                <h3 class="text-lg md:text-xl font-bold text-white">Onboarding del Partner</h3>
+                <p class="mt-2 md:mt-3 text-sm leading-relaxed text-white/60">Te facilitamos material de soporte, canales directos de atención y las condiciones comerciales de la alianza.</p>
+              </div>
+            </div>
+
+            <div class="reveal flex gap-5 md:block" style="--d:.23s">
+              <div class="flex-none md:mb-5 flex items-center justify-center w-[52px] h-[52px] rounded-full bg-gradient-to-br from-[#01c9e2] to-[#006afe] text-white font-bold text-lg shadow-brand">3</div>
+              <div>
+                <h3 class="text-lg md:text-xl font-bold text-white">Ejecución Delegada</h3>
+                <p class="mt-2 md:mt-3 text-sm leading-relaxed text-white/60">Nos envías el caso y nos encargamos del despliegue operativo en EE.&nbsp;UU., con seguimiento transparente para tu firma.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONVERSIÓN DIRECTA · CAL.COM EMBED ============ -->
+    <section id="agenda" class="py-20 md:py-24 bg-brand-dark-bg scroll-mt-20">
+      <div class="max-w-[1180px] mx-auto px-5 md:px-6">
+        <div class="reveal text-center max-w-[720px] mx-auto">
+          <span class="section-label !justify-center">Confirmación de alianza</span>
+          <h2 class="mt-4 text-[clamp(1.7rem,4vw,2.6rem)] font-bold tracking-[-0.02em] text-white">
+            Evaluemos cómo colaborar juntos
+          </h2>
+
+          <div class="mt-6 glass-dark rounded-xl px-5 py-4 grid grid-cols-1 sm:grid-cols-3 gap-2 text-left">
+            <span class="flex items-start gap-2 text-[0.82rem] text-white/80">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Cero conflicto de interés, por acuerdo firmado
+            </span>
+            <span class="flex items-start gap-2 text-[0.82rem] text-white/80">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Tu cliente nunca será contactado por nosotros
+            </span>
+            <span class="flex items-start gap-2 text-[0.82rem] text-white/80">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Sin costo ni compromiso para evaluar la sinergia
+            </span>
+          </div>
+
+          <p class="mt-6 text-sm text-white/50">
+            Selecciona el día y horario que prefieras. La llamada dura 15 minutos.
+          </p>
+        </div>
+
+        <div id="my-cal-inline" class="reveal mt-8 max-w-[920px] mx-auto min-h-[640px] rounded-xl2 border border-white/10 bg-brand-dark-card/60 overflow-hidden"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ MOBILE STICKY CTA ============ -->
+  <div id="mobileCta" class="fixed bottom-0 inset-x-0 z-50 md:hidden px-4 pb-4 translate-y-[120%] transition-transform duration-500">
+    <a href="#agenda" class="btn btn-primary w-full !h-[52px] shadow-brand-lg">
+      Agendar Llamada de Exploración
+    </a>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-brand-footer text-white pt-14 md:pt-16 pb-8">
+    <div class="max-w-[1180px] mx-auto px-5 md:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-white/10">
+        <div>
+          <a href="https://startcompanies.net" target="_blank" rel="noopener" class="flex items-center gap-2.5" aria-label="Start Companies — sitio oficial">
+            <img src="https://www.startcompanies.net/brand/logodark.svg" alt="Start Companies" class="h-8 w-auto max-w-[160px]" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
+            <span class="hidden items-baseline gap-2 text-white">
+              <span class="font-bold text-2xl tracking-tight">Start</span>
+              <span class="text-[0.68rem] font-semibold uppercase tracking-[0.35em] text-white/60">Companies</span>
+            </span>
+          </a>
+          <p class="mt-4 text-sm leading-relaxed text-white/70">
+            Empoderamos a firmas de consultoría, despachos legales y asesores fiscales con la infraestructura corporativa en EE.&nbsp;UU. para servir mejor a sus clientes.
+          </p>
+          <ul class="mt-5 space-y-2.5 text-sm">
+            <li>
+              <a href="mailto:administracion@startcompanies.net" class="inline-flex items-center gap-2.5 text-white/80 hover:text-[#01c9e2] transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+                administracion@startcompanies.net
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/17869354213" target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 text-white/80 hover:text-[#01c9e2] transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +1 (786) 935-4213
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-white/50">Aliados</h3>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li><a href="#modelos" class="text-white/80 hover:text-[#01c9e2] transition-colors">Modelos de colaboración</a></li>
+            <li><a href="#servicios" class="text-white/80 hover:text-[#01c9e2] transition-colors">Servicios gestionados</a></li>
+            <li><a href="#proceso" class="text-white/80 hover:text-[#01c9e2] transition-colors">Flujo de alianza</a></li>
+            <li><a href="#agenda" class="text-white/80 hover:text-[#01c9e2] transition-colors">Agendar llamada</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-white/50">Información</h3>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li>
+              <a href="https://startcompanies.net" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-white/80 hover:text-[#01c9e2] transition-colors">
+                startcompanies.net
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </a>
+            </li>
+            <li>
+              <span class="inline-flex items-start gap-2 text-white/70">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#01c9e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-none" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                420 SW 7TH ST, Suite 1015<br>Miami, FL 33130 — EE. UU.
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="mt-8 text-[0.75rem] leading-relaxed text-[#ffffff8c] max-w-[820px]">
+        Ebizboost LLC actúa como intermediario administrativo de trámites legales y bancarios. No somos un estudio de abogados ni una institución financiera. La apertura de cuentas y los trámites regulatorios dependen de la aprobación de cada entidad correspondiente.
+      </p>
+
+      <div class="mt-6 pt-5 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/50">
+        <p>© 2026 Start Companies. Todos los derechos reservados. Operado por <a href="https://startcompanies.net" target="_blank" rel="noopener" class="text-[#01c9e2] hover:underline">Ebizboost LLC</a>.</p>
+        <div class="flex items-center gap-5">
+          <a href="https://startcompanies.net" target="_blank" rel="noopener" class="hover:text-[#01c9e2] transition-colors">Privacidad</a>
+          <a href="https://startcompanies.net" target="_blank" rel="noopener" class="hover:text-[#01c9e2] transition-colors">Términos</a>
+          <a href="https://startcompanies.net" target="_blank" rel="noopener" class="hover:text-[#01c9e2] transition-colors">Aviso Legal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script>
+    (function () {
+      var header = document.getElementById('siteHeader');
+      var mobileCta = document.getElementById('mobileCta');
+      var onScroll = function () {
+        var y = window.scrollY || window.pageYOffset;
+        header.classList.toggle('is-scrolled', y > 16);
+        mobileCta.classList.toggle('translate-y-[120%]', y < window.innerHeight * 0.6);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
+  <script>
+    (function (C, A, L) {
+      var p = function (a, ar) {
+        a.q.push(ar);
+      };
+      var d = C.document;
+      C.Cal = C.Cal || function () {
+        var cal = C.Cal;
+        var ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement('script')).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          var api = function () {
+            p(api, arguments);
+          };
+          var namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === 'string') {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ['initNamespace', namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+    Cal('init');
+
+    Cal('inline', {
+      elementOrSelector: '#my-cal-inline',
+      calLink: 'startcompanies-businessenusa/socios',
+      config: {
+        theme: 'dark',
+        layout: 'month_view',
+        cssVarsPerTheme: {
+          dark: {
+            'cal-brand': '#006afe',
+            'cal-border': 'rgba(255,255,255,0.1)',
+          },
+        },
+      },
+    });
+  </script>
+</body>
+</html>
