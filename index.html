@@ -548,10 +548,10 @@
         <div class="reveal mt-8 mx-auto max-w-[640px]">
           <div class="glass-dark rounded-xl2 p-5 md:p-6 border border-white/10">
             <p class="text-[0.72rem] uppercase tracking-[0.14em] text-[#01c9e2] font-semibold">Paso 1 · Elegí el día</p>
-            <div id="day-slots" class="mt-4 grid grid-cols-5 sm:grid-cols-10 gap-2"></div>
+            <div id="day-slots" class="mt-4 flex flex-wrap gap-2"></div>
 
             <p class="mt-6 text-[0.72rem] uppercase tracking-[0.14em] text-[#01c9e2] font-semibold">Paso 2 · Elegí el horario</p>
-            <div id="time-slots" class="mt-4 grid grid-cols-3 sm:grid-cols-4 gap-2"></div>
+            <div id="time-slots" class="mt-4 flex flex-wrap gap-2"></div>
 
             <button id="confirm-slot" type="button" disabled class="btn btn-primary w-full mt-6 opacity-40 pointer-events-none !h-[50px]">
               Confirmar día y horario
@@ -762,98 +762,134 @@
     });
 
     (function () {
-      var CAL_LINK = 'startcompanies-businessenusa/socios';
-      var now = new Date();
+      var CAL_USER = 'startcompanies-businessenusa';
+      var CAL_SLUG = 'socios';
+      var CAL_LINK = CAL_USER + '/' + CAL_SLUG;
+      var SLOTS_API = 'https://api.cal.com/v2/slots';
+      var API_VERSION = '2024-09-04';
+      var DAYS_AHEAD = 28;
+      var MAX_DAYS = 10;
+
       var dayList = document.getElementById('day-slots');
       var timeList = document.getElementById('time-slots');
       var confirmBtn = document.getElementById('confirm-slot');
       var modal = document.getElementById('booking-modal');
       var modalCal = document.getElementById('modal-cal-inline');
       var summary = document.getElementById('booking-summary');
-      var selectedDay = null;
-      var selectedTime = null;
+
+      var slotsByDay = {};
+      var selectedDayKey = null;
+      var selectedSlot = null;
 
       var WEEKDAYS = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
       var MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
       function pad(n) { return n < 10 ? '0' + n : '' + n; }
-      function isoDate(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
-      function humanDate(d) {
-        return (WEEKDAYS[d.getDay()]) + ' ' + d.getDate() + ' ' + (MONTHS[d.getMonth()]);
+      function dateKey(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+      function keyToDate(key) { var p = key.split('-'); return new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10)); }
+      function humanDate(key) { var d = keyToDate(key); return WEEKDAYS[d.getDay()] + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()]; }
+      function timeLabel(iso) { var d = new Date(iso); return pad(d.getHours()) + ':' + pad(d.getMinutes()); }
+      function browserTZ() { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'; } catch (e) { return 'UTC'; } }
+
+      function message(el, text) {
+        el.innerHTML = '<p class="text-sm text-white/50 py-1">' + text + '</p>';
       }
 
-      var days = [];
-      for (var i = 0; i < 10; i++) {
-        var d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
-        days.push(d);
+      function syncConfirm() {
+        var ok = !!(selectedDayKey && selectedSlot);
+        confirmBtn.disabled = !ok;
+        confirmBtn.classList.toggle('opacity-40', !ok);
+        confirmBtn.classList.toggle('pointer-events-none', !ok);
       }
 
-      days.forEach(function (d) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'day-chip flex flex-col items-center rounded-xl border border-white/10 bg-white/[0.03] px-1 py-2 text-center transition-all duration-200 hover:border-[#006afe]/70 hover:bg-[#006afe]/10';
-        b.innerHTML =
-          '<span class="text-[0.62rem] uppercase tracking-wider text-white/50">' + WEEKDAYS[d.getDay()] + '</span>' +
-          '<span class="mt-0.5 text-base font-bold text-white">' + d.getDate() + '</span>' +
-          '<span class="text-[0.6rem] text-white/40">' + MONTHS[d.getMonth()] + '</span>';
-        b.addEventListener('click', function () {
-          dayList.querySelectorAll('.day-chip').forEach(function (c) {
-            c.classList.remove('border-[#01c9e2]', 'bg-[#01c9e2]/15', 'text-white');
-            c.classList.add('border-white/10', 'bg-white/[0.03]');
-          });
-          b.classList.remove('border-white/10', 'bg-white/[0.03]');
-          b.classList.add('border-[#01c9e2]', 'bg-[#01c9e2]/15');
-          selectedDay = d;
-          confirmBtn.disabled = selectedDay === null || selectedTime === null;
-          confirmBtn.classList.toggle('opacity-40', confirmBtn.disabled);
-          confirmBtn.classList.toggle('pointer-events-none', confirmBtn.disabled);
+      function highlight(list, cls, target) {
+        list.querySelectorAll('.' + cls).forEach(function (c) {
+          c.classList.remove('border-[#01c9e2]', 'bg-[#01c9e2]/15', 'text-white');
+          c.classList.add('border-white/10', 'bg-white/[0.03]');
         });
-        dayList.appendChild(b);
-      });
-
-      var times = [];
-      for (var h = 9; h <= 17; h++) {
-        times.push(pad(h) + ':00');
-        if (h < 17) times.push(pad(h) + ':30');
+        target.classList.remove('border-white/10', 'bg-white/[0.03]');
+        target.classList.add('border-[#01c9e2]', 'bg-[#01c9e2]/15', 'text-white');
       }
 
-      times.forEach(function (t) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'time-chip rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-sm font-semibold text-white/80 transition-all duration-200 hover:border-[#006afe]/70 hover:bg-[#006afe]/10';
-        b.textContent = t;
-        b.addEventListener('click', function () {
-          timeList.querySelectorAll('.time-chip').forEach(function (c) {
-            c.classList.remove('border-[#01c9e2]', 'bg-[#01c9e2]/15', 'text-white');
-            c.classList.add('border-white/10', 'bg-white/[0.03]');
+      function renderTimes(dayKey) {
+        timeList.innerHTML = '';
+        selectedSlot = null;
+        syncConfirm();
+        var slots = slotsByDay[dayKey] || [];
+        if (!slots.length) { message(timeList, 'Sin horarios disponibles este día.'); return; }
+        slots.forEach(function (s) {
+          var iso = s.start;
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'time-chip min-w-[72px] rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-sm font-semibold text-white/80 transition-all duration-200 hover:border-[#006afe]/70 hover:bg-[#006afe]/10';
+          b.textContent = timeLabel(iso);
+          b.addEventListener('click', function () {
+            highlight(timeList, 'time-chip', b);
+            selectedSlot = iso;
+            syncConfirm();
           });
-          b.classList.remove('border-white/10', 'bg-white/[0.03]');
-          b.classList.add('border-[#01c9e2]', 'bg-[#01c9e2]/15', 'text-white');
-          selectedTime = t;
-          confirmBtn.disabled = selectedDay === null || selectedTime === null;
-          confirmBtn.classList.toggle('opacity-40', confirmBtn.disabled);
-          confirmBtn.classList.toggle('pointer-events-none', confirmBtn.disabled);
+          timeList.appendChild(b);
         });
-        timeList.appendChild(b);
-      });
+      }
 
-      function slotISO() {
-        var p = selectedTime.split(':');
-        var dt = new Date(
-          selectedDay.getFullYear(),
-          selectedDay.getMonth(),
-          selectedDay.getDate(),
-          parseInt(p[0], 10),
-          parseInt(p[1], 10),
-          0,
-          0
-        );
-        return dt.toISOString();
+      function renderDays(data) {
+        slotsByDay = {};
+        selectedDayKey = null;
+        selectedSlot = null;
+        syncConfirm();
+        dayList.innerHTML = '';
+        var keys = Object.keys(data).filter(function (k) { return (data[k] || []).length; }).sort();
+        if (!keys.length) {
+          message(dayList, 'No hay horarios disponibles por ahora.');
+          message(timeList, 'Escribinos y coordinamos un horario a medida.');
+          return;
+        }
+        keys.slice(0, MAX_DAYS).forEach(function (key) {
+          slotsByDay[key] = data[key];
+          var d = keyToDate(key);
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'day-chip min-w-[56px] flex flex-col items-center rounded-xl border border-white/10 bg-white/[0.03] px-2 py-2 text-center transition-all duration-200 hover:border-[#006afe]/70 hover:bg-[#006afe]/10';
+          b.innerHTML =
+            '<span class="text-[0.62rem] uppercase tracking-wider text-white/50">' + WEEKDAYS[d.getDay()] + '</span>' +
+            '<span class="mt-0.5 text-base font-bold text-white">' + d.getDate() + '</span>' +
+            '<span class="text-[0.6rem] text-white/40">' + MONTHS[d.getMonth()] + '</span>';
+          b.addEventListener('click', function () {
+            highlight(dayList, 'day-chip', b);
+            selectedDayKey = key;
+            renderTimes(key);
+          });
+          dayList.appendChild(b);
+        });
+        var first = dayList.querySelector('.day-chip');
+        if (first) first.click();
+      }
+
+      function fallback() {
+        message(dayList, 'No pudimos cargar la disponibilidad en este momento.');
+        timeList.innerHTML = '<a class="btn btn-primary w-full !h-[46px]" href="https://cal.com/' + CAL_LINK + '" target="_blank" rel="noopener">Ver horarios disponibles</a>';
+      }
+
+      function load() {
+        message(dayList, 'Cargando disponibilidad…');
+        message(timeList, 'Elegí un día para ver los horarios disponibles.');
+        var end = new Date();
+        end.setDate(end.getDate() + DAYS_AHEAD);
+        var url = SLOTS_API +
+          '?username=' + encodeURIComponent(CAL_USER) +
+          '&eventTypeSlug=' + encodeURIComponent(CAL_SLUG) +
+          '&start=' + dateKey(new Date()) +
+          '&end=' + dateKey(end) +
+          '&timeZone=' + encodeURIComponent(browserTZ());
+        fetch(url, { headers: { 'cal-api-version': API_VERSION } })
+          .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+          .then(function (j) { renderDays((j && j.data) || {}); })
+          .catch(function () { fallback(); });
       }
 
       function openModal() {
-        var date = isoDate(selectedDay);
-        summary.textContent = humanDate(selectedDay) + ' · ' + selectedTime + ' hs';
+        if (!selectedDayKey || !selectedSlot) return;
+        summary.textContent = humanDate(selectedDayKey) + ' · ' + timeLabel(selectedSlot) + ' hs';
         modalCal.innerHTML = '';
         Cal('inline', {
           elementOrSelector: '#modal-cal-inline',
@@ -861,9 +897,9 @@
           config: {
             theme: 'dark',
             layout: 'month_view',
-            date: date,
-            month: date.slice(0, 7),
-            slot: slotISO(),
+            date: selectedDayKey,
+            month: selectedDayKey.slice(0, 7),
+            slot: selectedSlot,
           },
         });
         modal.classList.remove('hidden');
@@ -881,6 +917,8 @@
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeModal();
       });
+
+      load();
     })();
   </script>
 </body>
