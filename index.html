@@ -825,6 +825,20 @@
         timeList.appendChild(b);
       });
 
+      function slotISO() {
+        var p = selectedTime.split(':');
+        var dt = new Date(
+          selectedDay.getFullYear(),
+          selectedDay.getMonth(),
+          selectedDay.getDate(),
+          parseInt(p[0], 10),
+          parseInt(p[1], 10),
+          0,
+          0
+        );
+        return dt.toISOString();
+      }
+
       function openModal() {
         var date = isoDate(selectedDay);
         summary.textContent = humanDate(selectedDay) + ' · ' + selectedTime + ' hs';
@@ -834,8 +848,10 @@
           calLink: CAL_LINK,
           config: {
             theme: 'dark',
-            layout: 'week_view',
+            layout: 'month_view',
             date: date,
+            month: date.slice(0, 7),
+            slot: slotISO(),
           },
         });
         modal.classList.remove('hidden');
